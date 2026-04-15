@@ -2,9 +2,18 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { TypeAnimation } from "react-type-animation";
-import { Player } from "@lottiefiles/react-lottie-player";
 import { PacmanLoader } from "react-spinners";
+import dynamic from "next/dynamic";
+
+const Player = dynamic(
+  () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
+  { ssr: false },
+);
+
+const TypeAnimation = dynamic(
+  () => import("react-type-animation").then((m) => m.TypeAnimation),
+  { ssr: false },
+);
 
 export default function Home() {
   const [loading, setLoading] = useState(true);

@@ -2,8 +2,12 @@
 
 import Link from "next/link";
 import { TIMELINE_DATA } from "../constants";
-import Background from "../components/Background";
 import TimelineItems from "../components/TimelineItems";
+import dynamic from "next/dynamic";
+
+const Background = dynamic(() => import("../components/Background"), {
+  ssr: false,
+});
 
 export default function TimelinePage() {
   return (
